@@ -95,6 +95,33 @@ small, .muted { color: var(--muted); }
 .button.primary { background: var(--primary); color: #0b1220; border-color: transparent; }
 .button.primary:hover { background: var(--primary-600); }
 
+/* Dropdown-like buttons */
+.button[aria-controls] {
+  justify-content: space-between;
+  padding-right: 2rem;
+  position: relative;
+}
+.button[aria-controls]::after {
+  content: "\25BE"; /* ▾ */
+  position: absolute;
+  right: .6rem;
+  font-size: .9em;
+  color: var(--muted);
+  transition: transform .2s ease, color .2s ease;
+}
+.button[aria-controls]:hover::after { color: var(--link-hover); }
+.button[aria-expanded="true"]::after { transform: rotate(180deg); }
+
+/* Dropdown menu panel */
+.button + .card {
+  margin-top: .4rem;
+  box-shadow: 0 12px 24px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25);
+  border-radius: .6rem;
+  padding: .5rem .75rem;
+}
+.button + .card ul.clean { padding-left: 0; }
+.button + .card ul.clean li { margin: .3rem 0; }
+
 /* Accordion */
 .accordion { display: grid; gap: .75rem; }
 .accordion summary {
